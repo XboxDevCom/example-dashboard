@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="Dashboard.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Dashboard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    UseSystemFocusVisuals="True"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="48,24">
+        <SplitView x:Name="Splitter"
+                   DisplayMode="CompactOverlay"
+                   IsPaneOpen="True"
+                   CompactPaneLength="48"
+                   OpenPaneLength="240"
+                   PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+            <SplitView.Pane>
+                <ListView x:Name="NavMenu"
+                          SelectionChanged="NavMenu_SelectionChanged"
+                          SelectionMode="Single"
+                          IsItemClickEnabled="False"
+                          Padding="0,12,0,0">
+                    <ListViewItem x:Name="NavHome"
+                                  Tag="home"
+                                  MinHeight="48"
+                                  XYFocusDown="NavStats">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Home" Width="32"/>
+                            <TextBlock Text="Start" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="NavStats"
+                                  Tag="stats"
+                                  MinHeight="48"
+                                  XYFocusUp="NavHome"
+                                  XYFocusDown="NavSettings">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Chart" Width="32"/>
+                            <TextBlock Text="Statistiken" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="NavSettings"
+                                  Tag="settings"
+                                  MinHeight="48"
+                                  XYFocusUp="NavStats"
+                                  XYFocusDown="NavAbout">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Setting" Width="32"/>
+                            <TextBlock Text="Einstellungen" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="NavAbout"
+                                  Tag="about"
+                                  MinHeight="48"
+                                  XYFocusUp="NavSettings">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Help" Width="32"/>
+                            <TextBlock Text="Info" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame x:Name="ContentFrame"/>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
